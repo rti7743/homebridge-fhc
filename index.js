@@ -1,4 +1,4 @@
-var Accessory, Service, Characteristic,KeyCharacteristic;
+var Accessory, Service, Characteristic;
 var http = require("http");
 var util = require("util");
 
@@ -12,8 +12,6 @@ module.exports = function(homebridge) {
 	Service = homebridge.hap.Service;
 	Characteristic = homebridge.hap.Characteristic;
 	Accessory = homebridge.platformAccessory;
-
-	makeKeyCharacteristic();
 
 	homebridge.registerPlatform("homebridge-fhc", "FHC", FHCPlatform, false);
 }
@@ -93,8 +91,10 @@ FHCPlatform.prototype = {
 			for(var i in res.list)
 			{
 				var elec = res.list[i];
-				self._makeAccessory(elec,function(accessory){
-					done++;
+				self._makeAccessory(elec,function(accessory,skipCount){
+					if (!skipCount) {
+						done++;
+					}
 					if (accessory) {
 						foundAccessories.push(accessory);
 					}
@@ -106,6 +106,16 @@ FHCPlatform.prototype = {
 			}
 		});
 	},
+	_findStrings: function(need,arr){
+		for(var i in arr)
+		{
+			if ( arr[i].indexOf(need) >= 0 )
+			{
+				return i;
+			}
+		}
+		return -1;
+	},
 	_makeAccessory: function(elec,callback){
 		var self = this;
 		this.CallFHCAPI('/api/elec/getactionlist?elec=' + encodeURIComponent(elec), function(res){
@@ -114,7 +124,34 @@ FHCPlatform.prototype = {
 				callback(null);
 				return ;
 			}
-			var accessory = new FHCAccessory(elec,res.list,self);
+			
+			var turn_on  = "つける";
+			var turn_off = "けす";
+			if (elec == "エアコン" 
+				&& self._findStrings("暖房",res.list) >= 0
+				&& self._findStrings("つける",res.list) < 0 )
+			{
+				if ( self._findStrings("冷房普通",res.list) >= 0) {
+					turn_on  = "冷房普通";
+				}
+				else {
+					turn_on  = "つける";
+				}
+				var accessory = new FHCAccessory("エアコン",turn_on,turn_off,self);
+				callback(accessory,true);
+
+				if ( self._findStrings("暖房普通",res.list) >= 0) {
+					turn_on  = "暖房普通";
+				}
+				else {
+					turn_on  = "つける";
+				}
+				var accessory = new FHCAccessory("暖房",turn_on,turn_off,self);
+				callback(accessory);
+				return ;
+			}
+
+			var accessory = new FHCAccessory(elec,turn_on,turn_off,self);
 			callback(accessory);
 		});
 	}
@@ -122,10 +159,11 @@ FHCPlatform.prototype = {
 module.exports.platform = FHCPlatform;
 
 
-function FHCAccessory(elec,actions,client){
+function FHCAccessory(elec,turn_on,turn_off,client){
 	// device info
 	this.name = elec;
-	this.actions = actions;
+	this.turn_on = turn_on;
+	this.turn_off = turn_off;
 	this.client = client;
 }
 
@@ -152,13 +190,14 @@ FHCAccessory.prototype = {
 
 	_getPowerState: function(callback){
 		log("fetching power state for: " + this.name);
+		var self = this;
 
 		this._fetchState(this.name, function(data){
 			if (data) {
-				powerState = data.status == 'つける'
-				callback(null, powerState)
+				powerState = data.status == self.turn_on;
+				callback(null, powerState);
 			}else{
-				callback(communicationError)
+				callback(communicationError);
 			}
 		}.bind(this));
 	},
@@ -168,7 +207,7 @@ FHCAccessory.prototype = {
 		if (powerOn) {
 			log("Setting power state on the '"+this.name+"' to on");
 
-			this._callService(this.name, 'つける', function(data){
+			this._callService(this.name, self.turn_on, function(data){
 				if (data) {
 					log("Successfully set power state on the '"+self.name+"' to on");
 					callback();
@@ -179,7 +218,7 @@ FHCAccessory.prototype = {
 		}else{
 			log("Setting power state on the '"+this.name+"' to off");
 
-			this._callService(this.name, 'けす', function(data){
+			this._callService(this.name, self.turn_off, function(data){
 				if (data) {
 					log("Successfully set power state on the '"+self.name+"' to off");
 					callback();
@@ -188,52 +227,6 @@ FHCAccessory.prototype = {
 				callback(communicationError);
 			}.bind(this));
 		}
-	},
-
-	_getKey: function(callback) {
-		log("_getKey for: " + this.name);
-		var self = this;
-
-		callback(null, "ない");
-	},
-
-	_setKey: function(key, callback) {
-		var self = this;
-		log("_setKey for: " + this.name + " key :" + key);
-		
-		var action = this.actions.indexOf(key);
-		if (action >= 0)
-		{//キーがあった。
-			this._callService(this.name, key, function(data){
-				if (data) {
-					log("Successfully set power state on the '"+self.name+"' to string");
-					callback();
-					return;
-				}
-				callback(communicationError);
-			}.bind(this));
-		}
-		else
-		{//キーがない
-			this._callServiceByString(this.name + key,function(data){
-				if (data)
-				{
-					callback();
-					return;
-				}
-				//機材名を消してみる.
-				this._callServiceByString(key,function(data){
-					if (data)
-					{
-						callback();
-						return;
-					}
-					callback(communicationError);
-				});
-			});
-		}
-	},
-	_makeService: function(elec){
 	},
 
 	getServices: function() {
@@ -249,6 +242,11 @@ FHCAccessory.prototype = {
 			model = "Light";
 			break;
 		case 'エアコン':
+//			statusService = new Service.Thermostat();
+			statusService = new Service.Switch();
+			model = "Thermostat";
+			break;
+		case '暖房':
 //			statusService = new Service.Thermostat();
 			statusService = new Service.Switch();
 			model = "Thermostat";
@@ -328,36 +326,9 @@ FHCAccessory.prototype = {
 		.on('get', this._getPowerState.bind(this))
 		.on('set', this._setPowerState.bind(this));
 
-		statusService
-		.addCharacteristic(KeyCharacteristic)
-		.on('get', this._getKey.bind(this))
-		.on('set', this._setKey.bind(this));
-
 		return [informationService, statusService];
 	}
 
 }
 
-/**
- * Custom characteristic for any key
- * @see(https://github.com/natalan/samsung-remote) The key can be any remote key without the KEY_ at the beginning (e.g. MENU)
- *
- * @return {Characteristic} The key characteristic
- */
-function makeKeyCharacteristic() {
-	KeyCharacteristic = function() {
-		Characteristic.call(this, 'Key', '2A6FD4DE-8103-4E58-BDAC-25835CD006BD');
-		this.setProps({
-			format: Characteristic.Formats.STRING,
-			unit: Characteristic.Units.NONE,
-			//maxValue: 10,
-			//minValue: -10,
-			//minStep: 1,
-			perms: [Characteristic.Perms.READ, Characteristic.Perms.WRITE, Characteristic.Perms.NOTIFY]
-		});
-		this.value = this.getDefaultValue();
-	};
-
-	util.inherits(KeyCharacteristic, Characteristic);
-}
 

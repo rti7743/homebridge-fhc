@@ -1,74 +1,74 @@
 
 # Future Home Contorller for Homebridge
-ƒtƒ…[ƒ`ƒƒ[ƒz[ƒ€ƒRƒ“ƒgƒ[ƒ‰[‚Ìwebapi‚ğ homebrige‚É‘Î‰‚³‚¹‚ÄAsiri‚©‚çŒÄ‚Ño‚µ‚Ä‚İ‚éƒeƒXƒgB
+ãƒ•ãƒ¥ãƒ¼ãƒãƒ£ãƒ¼ãƒ›ãƒ¼ãƒ ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼ã®webapiã‚’ homebrigeã«å¯¾å¿œã•ã›ã¦ã€siriã‹ã‚‰å‘¼ã³å‡ºã—ã¦ã¿ã‚‹ãƒ†ã‚¹ãƒˆã€‚
 
 ## Device Support
-ƒtƒ…[ƒ`ƒƒ[ƒz[ƒ€ƒRƒ“ƒgƒ[ƒ‰[‚Æ‚¢‚¤‰¹º”F¯‚Å‰Æ“d‘€ì‚ğ‚·‚éƒKƒWƒFƒbƒg‚ª‚ ‚éB
-“Æ©‚Ì‰¹º”F¯ƒGƒ“ƒWƒ“‚ğ“‹Ú‚µ‚Ä‚¢‚ÄA‚È‚ñ‚Å‚à‚Å‚«‚éB
-‚½‚¾Asiri‚©‚çg‚¢‚½‚¢‚Æ‚¨‘O‚ªŒ¾‚¤‚È‚çd•û‚ª‚È‚¢B‘Î‰‚³‚¹‚Ä‚â‚ñ‚æB
+ãƒ•ãƒ¥ãƒ¼ãƒãƒ£ãƒ¼ãƒ›ãƒ¼ãƒ ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼ã¨ã„ã†éŸ³å£°èªè­˜ã§å®¶é›»æ“ä½œã‚’ã™ã‚‹ã‚¬ã‚¸ã‚§ãƒƒãƒˆãŒã‚ã‚‹ã€‚
+ç‹¬è‡ªã®éŸ³å£°èªè­˜ã‚¨ãƒ³ã‚¸ãƒ³ã‚’æ­è¼‰ã—ã¦ã„ã¦ã€ãªã‚“ã§ã‚‚ã§ãã‚‹ã€‚
+ãŸã ã€siriã‹ã‚‰ä½¿ã„ãŸã„ã¨ãŠå‰ãŒè¨€ã†ãªã‚‰ä»•æ–¹ãŒãªã„ã€‚å¯¾å¿œã•ã›ã¦ã‚„ã‚“ã‚ˆã€‚
 
-‚½‚¾‚µA‚Ü‚¾ Switch‚Æ‚µ‚Ä‚µ‚©‘Î‰‚³‚¹‚Ä‚¢‚È‚¢B
-ƒGƒAƒRƒ“‚ğService.Thermostat‚Æ‚©‚É‚µ‚½‚¢‚¯‚ÇA‘Î‰‚³‚¹‚é€–Ú‘½‚·‚¬‚é‚ñ‚æ[B
+ãŸã ã—ã€ã¾ã  Switchã¨ã—ã¦ã—ã‹å¯¾å¿œã•ã›ã¦ã„ãªã„ã€‚
+ã‚¨ã‚¢ã‚³ãƒ³ã‚’Service.Thermostatã¨ã‹ã«ã—ãŸã„ã‘ã©ã€å¯¾å¿œã•ã›ã‚‹é …ç›®å¤šã™ãã‚‹ã‚“ã‚ˆãƒ¼ã€‚
 
 
 ## Installation
 
-‚Ü‚¸AHomebridge‚ğƒCƒ“ƒXƒg[ƒ‹‚·‚é [Homebridge](https://github.com/nfarina/homebridge)
-‚»‚ÌŒã‚ÅA‚±‚Ìƒvƒ‰ƒOƒCƒ“‚ğ“ü‚ê‚Ä‚­‚êBƒRƒ}ƒ“ƒh‚¾‚Æ‚±‚¤‚È‚éB
+ã¾ãšã€Homebridgeã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã™ã‚‹ [Homebridge](https://github.com/nfarina/homebridge)
+ãã®å¾Œã§ã€ã“ã®ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚’å…¥ã‚Œã¦ãã‚Œã€‚ã‚³ãƒãƒ³ãƒ‰ã ã¨ã“ã†ãªã‚‹ã€‚
 
-    npm install -g homebridge-fhc (—\’è)
+    npm install -g homebridge-fhc
 
-‚»‚µ‚ÄA config.json‚ÉŸ‚Ì‚æ‚¤‚É‘‚¢‚Ä‚­‚êB
+ãã—ã¦ã€ config.jsonã«æ¬¡ã®ã‚ˆã†ã«æ›¸ã„ã¦ãã‚Œã€‚
 
     "platforms": [
          {
              "platform" : "FHC",
              "name" : "FHC",
-             "apikey" : "<<WEBAPIKEY>>"
-             "host" : "<<FHC LOCAL IP —á: http://192.168.1.123 >>"
+             "apikey" : "<<WEBAPIKEY>>",
+             "host" : "<<FHC LOCAL IP ä¾‹: http://192.168.1.123 >>"
          }
     ]
 
-## Installation ‚»‚Ì2
+## Installation ãã®2
 
-•ÊI‚Énodejs‚Æ‚©“ü‚ê‚é‚Ì‚ª‚¾‚é‚¢ê‡‚ÍAFHC’[––“à‚Énodejs‚ğ“ü‚ê‚é‹Z‚ª‚ ‚éB
-‚½‚¾‚µA©ŒÈÓ”C‚Å‚â‚é‚±‚ÆB
-‚»‚µ‚ÄA‘æ4ŸƒƒbƒgˆÈŒã(2013”N6ŒˆÈŒão‰×•ª)‚ÌV‚µ‚¢ƒƒbƒg‚Å‚µ‚©“®‚©‚È‚¢‚Æv‚¤B
+åˆ¥é¯–ã«nodejsã¨ã‹å…¥ã‚Œã‚‹ã®ãŒã ã‚‹ã„å ´åˆã¯ã€FHCç«¯æœ«å†…ã«nodejsã‚’å…¥ã‚Œã‚‹æŠ€ãŒã‚ã‚‹ã€‚
+ãŸã ã—ã€è‡ªå·±è²¬ä»»ã§ã‚„ã‚‹ã“ã¨ã€‚
+ãã—ã¦ã€ç¬¬4æ¬¡ãƒ­ãƒƒãƒˆä»¥å¾Œ(2013å¹´6æœˆä»¥å¾Œå‡ºè·åˆ†)ã®æ–°ã—ã„ãƒ­ãƒƒãƒˆã§ã—ã‹å‹•ã‹ãªã„ã¨æ€ã†ã€‚
 
 
-     ‚Ü‚¸ssh‚ÅFHC‚ÉÚ‘±‚µ‚ÄAsu - ‚Å root ‚É‚È‚ë‚¤B
+     ã¾ãšsshã§FHCã«æ¥ç¶šã—ã¦ã€su - ã§ root ã«ãªã‚ã†ã€‚
      https://rti-giken.jp/fhc/help/howto/ssh.html
      
-     #‚È‚É‚Í‚Æ‚à‚ ‚êƒpƒbƒP[ƒW‚ÌƒAƒbƒvƒf[ƒg
+     #ãªã«ã¯ã¨ã‚‚ã‚ã‚Œãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ã®ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆ
      opkg update
      
-     #dns_sd.h‚ª•K—v‚Å‚·B
+     #dns_sd.hãŒå¿…è¦ã§ã™ã€‚
      opkg install avahi-dev
      
-     #opkg install nodejs ‚¾‚Æ‚à‚Á‚ÆŒÃ‚·‚¬‚Ä“®‚©‚È‚¢‚Ì‚Åƒ_ƒ‚Å‚·B
-     #c”O‚È‚ª‚ç gcc‚ªŒÃ‚¢‚Ì‚ÅA 0.12.xŒn‚µ‚©ƒrƒ‹ƒh‚Å‚«‚Ü‚¹‚ñB
+     #opkg install nodejs ã ã¨ã‚‚ã£ã¨å¤ã™ãã¦å‹•ã‹ãªã„ã®ã§ãƒ€ãƒ¡ã§ã™ã€‚
+     #æ®‹å¿µãªãŒã‚‰ gccãŒå¤ã„ã®ã§ã€ 0.12.xç³»ã—ã‹ãƒ“ãƒ«ãƒ‰ã§ãã¾ã›ã‚“ã€‚
      wget http://nodejs.org/dist/v0.12.9/node-v0.12.9.tar.gz
      tar zxvf node-v0.12.9.tar.gz
      cd node-v0.12.9
      ./configure
      make
      
-     #make ‚É‚Í4ŠÔ‚Ù‚Ç‚©‚©‚è‚Ü‚·B
-     #make‚·‚é‘O‚ÉACPUƒŠƒ\[ƒX‚Æƒƒ‚ƒŠ‚ğ‹ó‚¯‚éˆÓ–¡‚ÅA
-     #ƒ}ƒCƒN‚ğ”²‚­‚±‚Æ‚ğ‚¨‚·‚·‚ß‚µ‚Ü‚·B
-     #ƒ}ƒCƒN‚ªh‚³‚Á‚Ä‚¢‚é‚Æ‰¹º”F¯‚ÅCPUg‚Á‚Ä‚µ‚Ü‚¤‚Ì‚ÅAˆÀ’è‚³‚¹‚é‚½‚ß‚Éƒ}ƒCƒN‚ğ”²‚«‚Ü‚µ‚å‚¤B
+     #make ã«ã¯4æ™‚é–“ã»ã©ã‹ã‹ã‚Šã¾ã™ã€‚
+     #makeã™ã‚‹å‰ã«ã€CPUãƒªã‚½ãƒ¼ã‚¹ã¨ãƒ¡ãƒ¢ãƒªã‚’ç©ºã‘ã‚‹æ„å‘³ã§ã€
+     #ãƒã‚¤ã‚¯ã‚’æŠœãã“ã¨ã‚’ãŠã™ã™ã‚ã—ã¾ã™ã€‚
+     #ãƒã‚¤ã‚¯ãŒåˆºã•ã£ã¦ã„ã‚‹ã¨éŸ³å£°èªè­˜ã§CPUä½¿ã£ã¦ã—ã¾ã†ã®ã§ã€å®‰å®šã•ã›ã‚‹ãŸã‚ã«ãƒã‚¤ã‚¯ã‚’æŠœãã¾ã—ã‚‡ã†ã€‚
      
-     #make‚ªI‚í‚Á‚½‚çinstall‚µ‚Ü‚·B
-     #/usr/local/ ‚ÉA nodejs ‚ª“ü‚è‚Ü‚·B
+     #makeãŒçµ‚ã‚ã£ãŸã‚‰installã—ã¾ã™ã€‚
+     #/usr/local/ ã«ã€ nodejs ãŒå…¥ã‚Šã¾ã™ã€‚
      make install
      
-     #ƒo[ƒWƒ‡ƒ“Šm”F
-     0.12.9 ‚Æ•\¦‚³‚ê‚ê‚Îok
+     #ãƒãƒ¼ã‚¸ãƒ§ãƒ³ç¢ºèª
+     0.12.9 ã¨è¡¨ç¤ºã•ã‚Œã‚Œã°ok
      node -v
      
      
-     #‚±‚ê‚Ånpm‚·‚ê‚ÎEEE‚Æv‚¤‚©‚à‚µ‚ê‚Ü‚¹‚ñ‚ªA
-     #dns_sd.h‚ª•K—v‚ÅAopkg‚Å‚Í“ü‚ç‚È‚¢‚Ì‚ÅA avahi‚ğƒrƒ‹ƒh‚µ‚Ü‚·B
+     #ã“ã‚Œã§npmã™ã‚Œã°ãƒ»ãƒ»ãƒ»ã¨æ€ã†ã‹ã‚‚ã—ã‚Œã¾ã›ã‚“ãŒã€
+     #dns_sd.hãŒå¿…è¦ã§ã€opkgã§ã¯å…¥ã‚‰ãªã„ã®ã§ã€ avahiã‚’ãƒ“ãƒ«ãƒ‰ã—ã¾ã™ã€‚
      #see https://github.com/agnat/node_mdns/issues/73
      
      opkg install libssp-dev
@@ -83,25 +83,25 @@
      ./configure --disable-static --disable-mono --disable-monodoc --disable-gtk3 --disable-gtk --disable-qt3 --disable-python --disable-qt4 --disable-core-docs --enable-compat-libdns_sd --disable-tests --with-distro=none
      make
      
-     ##make install ‚µ‚Ä‚Í‚¢‚¯‚È‚¢
-     ##•K—v‚Èƒtƒ@ƒCƒ‹‚¾‚¯ƒRƒs[‚·‚é
+     ##make install ã—ã¦ã¯ã„ã‘ãªã„
+     ##å¿…è¦ãªãƒ•ã‚¡ã‚¤ãƒ«ã ã‘ã‚³ãƒ”ãƒ¼ã™ã‚‹
      cp avahi-compat-libdns_sd/.libs/libdns_sd.so /usr/lib/
      cp avahi-compat-libdns_sd/dns_sd.h /usr/include/
      ln -s /usr/lib/libdns_sd.so /usr/lib/libdns_sd.so.1
      
-     #‚È‚ñ‚©‚¢‚é‚ç‚µ‚¢
+     #ãªã‚“ã‹ã„ã‚‹ã‚‰ã—ã„
      mkdir /home/root/.node-gyp
      
-     #‚â‚Á‚Æ“ü‚ê‚ç‚ê‚Ü‚·B
-     #‚±‚¿‚ç‚Í1ŠÔ‚®‚ç‚¢‚©‚©‚è‚Ü‚·B
+     #ã‚„ã£ã¨å…¥ã‚Œã‚‰ã‚Œã¾ã™ã€‚
+     #ã“ã¡ã‚‰ã¯1æ™‚é–“ãã‚‰ã„ã‹ã‹ã‚Šã¾ã™ã€‚
      npm install -g --unsafe-perm homebridge
      
      
-     #‚±‚Ìƒ‚ƒWƒ…[ƒ‹‚ğ“ü‚ê‚æ‚¤
-     npm install -g homebridge-fhc (—\’è)
-     ‚Ü‚½‚ÍAƒ\[ƒXƒR[ƒh‚ğ /usr/local/lib/node_modules/homebridge-fhc ‚ÉƒRƒs[‚µ‚Ä‚­‚¾‚³‚¢B
+     #ã“ã®ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å…¥ã‚Œã‚ˆã†
+     npm install -g homebridge-fhc
+     ã¾ãŸã¯ã€ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã‚’ /usr/local/lib/node_modules/homebridge-fhc ã«ã‚³ãƒ”ãƒ¼ã—ã¦ãã ã•ã„ã€‚
      
-     #İ’è‚ğ‚©‚±‚¤
+     #è¨­å®šã‚’ã‹ã“ã†
      vim /home/root/.homebridge/config.json
      --------------------------------------
      {
@@ -118,7 +118,7 @@
              {
                  "platform" : "FHC",
                  "name" : "FHC",
-                 "apikey" : "<<APIKEY>>"
+                 "apikey" : "<<APIKEY>>",
                  "host" : "http://127.0.0.1"
              }
      
@@ -127,41 +127,45 @@
      }
      --------------------------------------
      
-     #‚Ü‚¸‚ÍA avahi ‚ğ—§‚¿ã‚°‚éB
-     #homekit ‚Á‚Ä Bonjour ‚Æ‚©g‚Á‚ÄADNS ‚ÌtxtƒŒƒR[ƒh‚Æ‚©‚ğ—˜—p‚µ‚Ä‚È‚ñ‚©‚â‚Á‚Ä‚¢‚é‚ç‚µ‚¢‚Å‚·‚æB
+     #ã¾ãšã¯ã€ avahi ã‚’ç«‹ã¡ä¸Šã’ã‚‹ã€‚
+     #homekit ã£ã¦ Bonjour ã¨ã‹ä½¿ã£ã¦ã€DNS ã®txtãƒ¬ã‚³ãƒ¼ãƒ‰ã¨ã‹ã‚’åˆ©ç”¨ã—ã¦ãªã‚“ã‹ã‚„ã£ã¦ã„ã‚‹ã‚‰ã—ã„ã§ã™ã‚ˆã€‚
      /etc/init.d/avahi-daemon
      
-     #homebrige‚ğ—§‚¿ã‚°‚é
-     #‚Æ‚è‚ ‚¦‚¸‚±‚ê‚Å“®‚­B
+     #homebrigeã‚’ç«‹ã¡ä¸Šã’ã‚‹
+     #ã¨ã‚Šã‚ãˆãšã“ã‚Œã§å‹•ãã€‚
      homebridge
      
-     #iphone‚Æ‚©ipad‚Æ‚©‚Éinsteon+(–³—¿)‚ğ“ü‚ê‚Ä‚­‚¾‚³‚¢B
-     #(insteon for hub ‚Å‚Í‚È‚­‚ÄAinsteon+‚Ì•û‚Å‚·)
-     #‚±‚ê‚Å“®ì‚ğŠm”F‚µ‚Ä‚­‚¾‚³‚¢B
+     #iphoneã¨ã‹ipadã¨ã‹ã«insteon+(ç„¡æ–™)ã‚’å…¥ã‚Œã¦ãã ã•ã„ã€‚
+     #(insteon for hub ã§ã¯ãªãã¦ã€insteon+ã®æ–¹ã§ã™)
+     #ã“ã‚Œã§å‹•ä½œã‚’ç¢ºèªã—ã¦ãã ã•ã„ã€‚
      https://itunes.apple.com/jp/app/insteon+/id919270334
      
      
-     #–³–‚¤‚Ü‚­“®ì‚·‚é‚æ‚¤‚È‚ç‚ÎA©“®‹N“®‚Ìİ’è‚ğ‚µ‚Ü‚·
-     #avahi ‚ª©“®‹N“®‚·‚é‚æ‚¤‚É‚·‚é.
+     #ç„¡äº‹ã†ã¾ãå‹•ä½œã™ã‚‹ã‚ˆã†ãªã‚‰ã°ã€è‡ªå‹•èµ·å‹•ã®è¨­å®šã‚’ã—ã¾ã™
+     #avahi ãŒè‡ªå‹•èµ·å‹•ã™ã‚‹ã‚ˆã†ã«ã™ã‚‹.
      ln -s /lib/systemd/system/avahi-daemon.service /etc/systemd/system/multi-user.target.wants/
+     ln -s /lib/systemd/system/avahi-daemon.socket /etc/systemd/system/sockets.target.wants/
      
-     #‹N“®ƒXƒNƒŠƒvƒg‚ğì‚è‚Ü‚·.
-     #systemd‚¾‚¯‚¾‚Æƒ^ƒCƒ~ƒ“ƒO‚ª‚¸‚ê‚Ä‘Ê–Ú‚É‚È‚é‚Ì‚Åshellscript‚ğì‚é
+     #èµ·å‹•ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’ä½œã‚Šã¾ã™.
+     #systemdã ã‘ã ã¨ã‚¿ã‚¤ãƒŸãƒ³ã‚°ãŒãšã‚Œã¦é§„ç›®ã«ãªã‚‹ã®ã§shellscriptã‚’ä½œã‚‹
      vim /home/root/homebridge.sh
      -------------------------------------------------
      #!/bin/sh
      # wait wakeup avahi and FHC Process.
      sleep 120
      
+     PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+     HOME=/home/root
+     
      # run homebridge
-     #/usr/local/bin/homebridge > /tmp/homebridge.log
-     /usr/local/bin/homebridge
+     homebridge > /tmp/homebridge.log
+     #homebridge
      -------------------------------------------------
      
      chmod +x /home/root/homebridge.sh
      
-     #homebridge‚ğ‹N“®‚³‚¹‚é‚½‚ß‚Ìsystemd‚ğ‘‚­.
-     #–{“–Œ ŒÀ•ª—£‚µ‚½‚©‚Á‚½‚ªA•ª—£‚·‚é‚Æ‰½ŒÌ‚©‚¤‚Ü‚­‚¢‚©‚È‚¢EEE
+     #homebridgeã‚’èµ·å‹•ã•ã›ã‚‹ãŸã‚ã®systemdã‚’æ›¸ã.
+     #æœ¬å½“æ¨©é™åˆ†é›¢ã—ãŸã‹ã£ãŸãŒã€åˆ†é›¢ã™ã‚‹ã¨ä½•æ•…ã‹ã†ã¾ãã„ã‹ãªã„ãƒ»ãƒ»ãƒ»
      vim /lib/systemd/system/homebrige.service
      -------------------------------------------------
      [Unit]
@@ -179,31 +183,31 @@
      WantedBy=multi-user.target
      -------------------------------------------------
      
-     #©“®‹N“®“o˜^.
+     #è‡ªå‹•èµ·å‹•ç™»éŒ².
      ln -s /lib/systemd/system/homebrige.service /etc/systemd/system/multi-user.target.wants/
      
-     #‚±‚±‚Ü‚Åì‚Á‚½‚çÄ‹N“®‚µ‚Ä‚İ‚Ü‚µ‚å‚¤B
+     #ã“ã“ã¾ã§ä½œã£ãŸã‚‰å†èµ·å‹•ã—ã¦ã¿ã¾ã—ã‚‡ã†ã€‚
      sync
      reboot
      
-     #‚µ‚Î‚ç‚­‘Ò‚Â‚Æ FHC ƒvƒƒZƒX‚ªã‚ª‚è
-     #2•ªŒã‚ÉA homebridge‚àã‚ª‚è‚Ü‚·B
-     #2•ªŒã‚É‚µ‚Ä‚¢‚é——R‚Í FHC ‚ÌDHCPƒ^ƒCƒ€ƒAƒEƒg‚ª2•ª‚Ì‚½‚ß‚Å‚·B
-     #ˆÀ‘S‚ğ‚Æ‚Á‚ÄL‚Î‚µ‚Ä‚¢‚Ü‚·BÅ‰‚¾‚¯‚È‚Ì‚Å­‚µ‚¾‚¯‘Ò‚Á‚Ä‚­‚¾‚³‚¢B
+     #ã—ã°ã‚‰ãå¾…ã¤ã¨ FHC ãƒ—ãƒ­ã‚»ã‚¹ãŒä¸ŠãŒã‚Š
+     #2åˆ†å¾Œã«ã€ homebridgeã‚‚ä¸ŠãŒã‚Šã¾ã™ã€‚
+     #2åˆ†å¾Œã«ã—ã¦ã„ã‚‹ç†ç”±ã¯ FHC ã®DHCPã‚¿ã‚¤ãƒ ã‚¢ã‚¦ãƒˆãŒ2åˆ†ã®ãŸã‚ã§ã™ã€‚
+     #å®‰å…¨ã‚’ã¨ã£ã¦ä¼¸ã°ã—ã¦ã„ã¾ã™ã€‚æœ€åˆã ã‘ãªã®ã§å°‘ã—ã ã‘å¾…ã£ã¦ãã ã•ã„ã€‚
 
 
-## —V‚Ñ•û
-iphone‚Æ‚©ipad‚Æ‚©‚Éinsteon+(–³—¿)‚ğ“ü‚ê‚Ä‚­‚¾‚³‚¢B
-(insteon for hub ‚Å‚Í‚È‚­‚ÄAinsteon+‚Ì•û‚Å‚·)
+## éŠã³æ–¹
+iphoneã¨ã‹ipadã¨ã‹ã«insteon+(ç„¡æ–™)ã‚’å…¥ã‚Œã¦ãã ã•ã„ã€‚
+(insteon for hub ã§ã¯ãªãã¦ã€insteon+ã®æ–¹ã§ã™)
 https://itunes.apple.com/jp/app/insteon+/id919270334
 
 
-insteon+‚Å scan‚·‚é‚ÆAhomebridge ‚ªŒ©‚ê‚é‚Æv‚¢‚Ü‚·B
-‚ ‚Æ‚ÍA©—R‚É‘€ì‚µ‚Ä‚­‚¾‚³‚¢B
+insteon+ã§ scanã™ã‚‹ã¨ã€homebridge ãŒè¦‹ã‚Œã‚‹ã¨æ€ã„ã¾ã™ã€‚
+ã‚ã¨ã¯ã€è‡ªç”±ã«æ“ä½œã—ã¦ãã ã•ã„ã€‚
 
 
-## Ÿè‚Éthanks
-‚±‚Ìƒ\[ƒXƒR[ƒh‚ÍA homebridge-homeassistant ‚Æ homebridge-samsungtv-control ‚ğQl‚Éì‚è‚Ü‚µ‚½B
+## å‹æ‰‹ã«thanks
+ã“ã®ã‚½ãƒ¼ã‚¹ã‚³ãƒ¼ãƒ‰ã¯ã€ homebridge-homeassistant ã¨ homebridge-samsungtv-control ã‚’å‚è€ƒã«ä½œã‚Šã¾ã—ãŸã€‚
 
 
 ## Contributions
