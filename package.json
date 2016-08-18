@@ -1,0 +1,27 @@
+{
+  "name": "homebridge-fhc",
+  "version": "1.4.0",
+  "description": "Homebridge plugin for FHC (Future Home Contorler): https://rti-giken.jp",
+  "license": "MIT",
+  "keywords": [
+    "homebridge-plugin",
+    "homebridge",
+    "plugin",
+    "FHC",
+    "fhc",
+    "Future Home Contorler",
+    "homekit",
+    "siri"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rti7743/homebridge-fhc.git"
+  },
+  "bugs": {
+    "url": "http://github.com/rti7743/homebridge-fhc/issues"
+  },
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.3.0"
+  }
+}
