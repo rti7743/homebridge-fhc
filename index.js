@@ -2,7 +2,7 @@ var Accessory, Service, Characteristic,KeyCharacteristic;
 var http = require("http");
 var util = require("util");
 
-var communicationError = new Error('Can not communicate with Home Assistant.')
+var communicationError = new Error('Can not communicate with FHC.')
 var log = console.log;
 
 
