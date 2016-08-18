@@ -1,6 +1,6 @@
 {
   "name": "homebridge-fhc",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Homebridge plugin for FHC (Future Home Controller): https://rti-giken.jp",
   "license": "MIT",
   "keywords": [
