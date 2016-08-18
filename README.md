@@ -139,6 +139,16 @@
      #todo デーモン化
  
 
+## 遊び方
+iphoneとかipadとかにinsteon+(無料)を入れてください。
+(insteon for hub ではなくて、insteon+の方です)
+https://itunes.apple.com/jp/app/insteon+/id919270334
+
+
+insteon+で scanすると、homebridge が見れると思います。
+あとは、自由に操作してください。
+
+
 ## 勝手にthanks
 このソースコードは、 homebridge-homeassistant と homebridge-samsungtv-control を参考に作りました。
 
