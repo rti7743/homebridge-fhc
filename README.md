@@ -33,12 +33,12 @@
 
 別鯖にnodejsとか入れるのがだるい場合は、FHC端末内にnodejsを入れる技がある。
 ただし、自己責任でやること。
-そして、第4次移行の新しいロットでしか動かないと思う。
+そして、第4次ロット以後(2013年6月以後出荷分)の新しいロットでしか動かないと思う。
 
 
      まずsshでFHCに接続して、su - で root になろう。
      https://rti-giken.jp/fhc/help/howto/ssh.html
-
+     
      #なにはともあれパッケージのアップデート
      opkg update
      
@@ -107,7 +107,7 @@
      {
          "bridge": {
              "name": "Homebridge",
-             "username": "7C:66:9D:48:B4:28",
+             "username": "<MAC_ADDRESS>",
              "port": 51826,
              "pin": "031-45-154"
          },
@@ -132,12 +132,65 @@
      /etc/init.d/avahi-daemon
      
      #homebrigeを立ち上げる
+     #とりあえずこれで動く。
      homebridge
      
+     #iphoneとかipadとかにinsteon+(無料)を入れてください。
+     #(insteon for hub ではなくて、insteon+の方です)
+     #これで動作を確認してください。
+     https://itunes.apple.com/jp/app/insteon+/id919270334
      
-     #とりあえずこれで動く。
-     #todo デーモン化
- 
+     
+     #無事うまく動作するようならば、自動起動の設定をします
+     #avahi が自動起動するようにする.
+     ln -s /lib/systemd/system/avahi-daemon.service /etc/systemd/system/multi-user.target.wants/
+     
+     #起動スクリプトを作ります.
+     #systemdだけだとタイミングがずれて駄目になるのでshellscriptを作る
+     vim /home/root/homebridge.sh
+     -------------------------------------------------
+     #!/bin/sh
+     # wait wakeup avahi and FHC Process.
+     sleep 120
+     
+     # run homebridge
+     #/usr/local/bin/homebridge > /tmp/homebridge.log
+     /usr/local/bin/homebridge
+     -------------------------------------------------
+     
+     chmod +x /home/root/homebridge.sh
+     
+     #homebridgeを起動させるためのsystemdを書く.
+     #本当権限分離したかったが、分離すると何故かうまくいかない・・・
+     vim /lib/systemd/system/homebrige.service
+     -------------------------------------------------
+     [Unit]
+     Description=Node.js HomeKit Server
+     After=avahi-daemon.service
+     
+     [Service]
+     Type=simple
+     User=root
+     ExecStart=/home/root/homebridge.sh
+     RestartSec=10
+     KillMode=process
+     
+     [Install]
+     WantedBy=multi-user.target
+     -------------------------------------------------
+     
+     #自動起動登録.
+     ln -s /lib/systemd/system/homebrige.service /etc/systemd/system/multi-user.target.wants/
+     
+     #ここまで作ったら再起動してみましょう。
+     sync
+     reboot
+     
+     #しばらく待つと FHC プロセスが上がり
+     #2分後に、 homebridgeも上がります。
+     #2分後にしている理由は FHC のDHCPタイムアウトが2分のためです。
+     #安全をとって伸ばしています。最初だけなので少しだけ待ってください。
+
 
 ## 遊び方
 iphoneとかipadとかにinsteon+(無料)を入れてください。
